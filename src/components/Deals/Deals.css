@@ -30,6 +30,9 @@
 .deal-filters button:not(:last-child) {
   margin: 0 5px;
 }
+button.filter-btn-active {
+    background-color: var(--main-color);
+}
 .deal-wrapper .deal-content {
   justify-content: space-between;
   margin-top: 40px;

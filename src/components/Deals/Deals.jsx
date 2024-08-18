@@ -57,27 +57,17 @@ export default function Deals() {
   ]);
 
   const [category, setCategory] = useState(items);
-  const [className, setClassName] = useState(false);
+  const [activeBtn, setActiveBtn] = useState('apartment')
   const handleBtns = (e) => {
-    let word = e.target.value;
-
-    if (word === "penthouse") {
+    setActiveBtn(e)
+    if (e === "penthouse") {
       const filtered = items.filter((item) => item.type === "penthouse");
-      setClassName(true);
-      // let c = true;
-      // setClassName("deal-filter-btn filter-btn-active")
       setCategory(filtered);
-    } else if (word === "apartment") {
+    } else if (e === "apartment") {
       const filtered = items.filter((item) => item.type === "apartment");
-      // let c = true;
-      // setClassName("deal-filter-btn filter-btn-active")
-      setClassName(true);
       setCategory(filtered);
-    } else if (word === "villa House") {
+    } else if (e === "villa House") {
       const filtered = items.filter((item) => item.type === "villa House");
-      // let c = true;
-      // setClassName("deal-filter-btn filter-btn-active")
-      setClassName(true);
       setCategory(filtered);
     }
   };
@@ -94,35 +84,32 @@ export default function Deals() {
         <Title sub_title="best deal" title="find your best deal right now!" />
         <div className="deal-filters">
           <button
-            className={
-              className == true
-                ? "deal-filter-btn filter-btn-active"
-                : "deal-filter-btn"
-            }
-            value="apartment"
-            onClick={handleBtns}
+          className={
+            activeBtn === 'apartment'
+              ? 'deal-filter-btn filter-btn-active'
+              : 'deal-filter-btn'
+          }
+          onClick={() => handleBtns('apartment')}
           >
             apartment
           </button>
           <button
             className={
-              className == true
-                ? "deal-filter-btn filter-btn-active"
-                : "deal-filter-btn"
+              activeBtn === 'villa House'
+                ? 'deal-filter-btn filter-btn-active'
+                : 'deal-filter-btn'
             }
-            value="villa House"
-            onClick={handleBtns}
+            onClick={() => handleBtns('villa House')}
           >
             villa House
           </button>
           <button
-            className={
-              className == true
-                ? "deal-filter-btn filter-btn-active"
-                : "deal-filter-btn"
-            }
-            value="penthouse"
-            onClick={handleBtns}
+           className={
+            activeBtn === 'penthouse'
+              ? 'deal-filter-btn filter-btn-active'
+              : 'deal-filter-btn'
+          }
+          onClick={() => handleBtns('penthouse')}
           >
             penthouse
           </button>
